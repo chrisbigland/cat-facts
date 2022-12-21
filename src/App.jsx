@@ -2,66 +2,56 @@ import styles from "./App.module.scss";
 import { useState } from "react";
 import { cleanup } from "@testing-library/react";
 
+import { getCatFact } from "./services/catfacts.service";
+
 const App = () => {
   const [facts, setFacts] = useState([]);
+  const [randomFact, setRandomFact] = useState([]);
 
-  const API_URL = "https://catfact.ninja/facts";
-  const factsArr = [];
-  let factIdNo = 0;
-
-  const cleanCatFacts = (fact, factIdNo) => {
-    // fact is the object
-    let cleanedFact;
-    Object.keys(fact).forEach((key) => {
-      //key is the key item in our new array here
-      if (key.includes("fact")) {
-        // factsArr.push(fact[key]);
-        cleanedFact = { fact: fact[key], factId: factIdNo }; // sets the value of the key to this variable
-      }
-    });
-    // console.log(factsArr);
-    // return factsArr;
-    console.log(cleanedFact);
-    return cleanedFact;
-  };
-  // cleanCatFacts removes the 'length' from the fact, places it into a new array and I want it to add in a unique ID. It gets all the keys from the fact and then adds the key to the facts array if it is called 'fact' (basically adds all the facts into an array).
-
-  // ISSUE HERE THAT I AM CREATING MULTIPLE ARRAYS?
-
-  const getCatFact = () => {
-    fetch("https://catfact.ninja/facts")
-      .then((response) => response.json())
-      .then((jsonResponse) => {
-        // console.log(jsonResponse.data)
-        const jsonCatFacts = jsonResponse.data;
-        console.log("jsonCatFacts is", jsonCatFacts); // an array of objects, each with a 'fact' and a 'length' key.
-
-        const cleanedCatFacts = jsonCatFacts.map((object) => {
-          // map over the array of objects. Each object gets passed into the cleanCatFacts function where an array of its keys are created (will be 2 items).
-          factIdNo = factIdNo + 1;
-
-          return cleanCatFacts(object, factIdNo); // each time cleanCatFacts() is run, I get returned an array containing just the fact. I WANT AN OBJECT instead
-        });
-        // const cleanedCatFacts = cleanCatFacts(jsonCatFacts);
-        console.log(cleanedCatFacts);
-
-        setFacts(cleanedCatFacts);
-        console.log("facts are", facts);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  const updateFacts = async () => {
+    const apiFacts = await getCatFact();
+    setFacts(apiFacts);
+    console.log(facts);
   };
 
+  const updateRandomFact = async () => {
+    const apiFacts = await getCatFact();
+    const randomNumber = Math.floor(Math.random() * 10); // * apiFacts.length
+    const randomFact = apiFacts[randomNumber];
+    setRandomFact(randomFact);
+  };
+
+  console.log("randomFact is", randomFact);
+
+  // const getRandomFact = () => {
+  //   const randomNum = Math.floor(Math.random() * 10)
+  //   console.log("randomNum is", randomNum)
+  //   cleanedCatFacts[randomNum]
+  // }
+
+  // const getRandomFact = () => {
+  //   const randomNumber = Math.floor(Math.random() * .length) // Math.random creates a random number between 0 and 1. Math.floor rounds down and returns the largest integer less than or equal to a given number. Therefore This is going to give us a random whole number between 0 and 4 (or more if we add quotes)
+  //   console.log(randomNumber)
+  //   quoteText.innerHTML = quotes[randomNumber][0];
+
+  //   background.style.backgroundImage = `url(${quotes[randomNumber][1]})`
+  // }
+
+  console.log();
   return (
     <>
-      <button onClick={getCatFact}>Click Me</button>
+      <button onClick={updateFacts}>Click Me For All The Cat Facts</button>
+      <button onClick={updateRandomFact}>Click Me For A Random Cat Fact</button>
+      <p>This is a random Cat Fact:{randomFact.fact}</p>
       <div className={styles.factGrid}>
         {facts.map((fact) => {
           return (
-            <div className={styles.catFact} key={fact.factId}>
-              {fact.fact}
-            </div>
+            <>
+              <div className={styles.catFact} key={fact.factId}>
+                {fact.fact}
+              </div>
+              <div></div>
+            </>
           );
         })}
       </div>
@@ -71,4 +61,8 @@ const App = () => {
 
 export default App;
 
-// next steps - clean facts by removing the length and adding in a unique id.
+// next steps - show a random cat fact - do the logic inside the existing function and simply return something different.
+// fix the id issue - keeps changing
+// make the get random fact button dynamic by letting it times by the amount of facts (currently set to 10)
+// let user select how many random cat facts they see on the page
+// stylings
