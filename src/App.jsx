@@ -14,14 +14,72 @@ const App = () => {
     console.log(facts);
   };
 
+  const [prevNum, setPrevNum] = useState(0);
+
   const updateRandomFact = async () => {
     const apiFacts = await getCatFact();
-    const randomNumber = Math.floor(Math.random() * 10); // * apiFacts.length
-    const randomFact = apiFacts[randomNumber];
-    setRandomFact(randomFact);
+
+    // let randomNumber = 0
+
+    const createNewRandomNumber = (randomNumber) => {
+      console.log("createNewRandomNumber function triggered");
+      randomNumber = Math.floor(Math.random() * apiFacts.length);
+      if (randomNumber === prevNum) {
+        createNewRandomNumber();
+      }
+      else {
+        return randomNumber;
+      }
+    };
+
+    let randomNumber = Math.floor(Math.random() * apiFacts.length);
+
+    if (prevNum != randomNumber) {
+      console.log("they're different numbers!");
+      console.log(
+        "random number is",
+        randomNumber,
+        "check state for prev Num - now setting new prevNum to current random number via useState"
+      );
+      setPrevNum(randomNumber);
+      const newRandomFact = apiFacts[randomNumber];
+      setRandomFact(newRandomFact);
+    } else {
+      console.log(
+        "new random number needed because randomNumber is",
+        randomNumber
+      );
+      randomNumber = createNewRandomNumber();
+      console.log(
+        "randomNumber after createNewRandomNumber function is ",
+        randomNumber,
+        "check state for prev Num"
+      );
+      setPrevNum(randomNumber);
+      const newRandomFact = apiFacts[randomNumber];
+      setRandomFact(newRandomFact);
+    }
+
+    // randomNumber = createRandomNumber(randomNumber)
+
+    // console.log(randomNumber)
   };
 
-  console.log("randomFact is", randomFact);
+  //   if (prevNum != randomNumber) {
+  //     console.log("prevNum should not equal randomNumber")
+  //     console.log("prevNum is ", prevNum)
+  //     console.log("randomNumber is ", randomNumber)
+  //     setPrevNum(randomNumber);
+  //     console.log("prevNum is now", prevNum)
+  //     const newRandomFact = apiFacts[randomNumber];
+  //     console.log("randomNumber is", randomNumber);
+  //     setRandomFact(newRandomFact);
+  //   } else {
+  //     console.log("it's the same number!!!"); // working now
+  //   }
+  // };
+
+  // console.log("randomFact is", randomFact);
 
   // const getRandomFact = () => {
   //   const randomNum = Math.floor(Math.random() * 10)
