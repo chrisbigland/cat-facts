@@ -59,7 +59,7 @@ const App = () => {
       <div className={styles.factGrid}>
         {facts.map((fact) => {
           return (
-            <div className={styles.catFact} key={facts.indexOf(fact)}>
+            <div className={styles.catFact} key={fact.factId}>
               {fact.fact}
             </div>
           );
