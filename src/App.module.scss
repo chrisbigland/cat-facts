@@ -1,10 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Vinyl&family=Sevillana&display=swap');
+
+
 body {
   background-image: url("./images/paw-img.jpeg");
+}
+
+.headingContainer {
+  display: flex;
+  justify-content: center;
+
 }
 
 .heading {
   text-align: center;
   padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #FFFEE0;
+  font-size: 2rem;
+  width: 60vw;
+  border: 1px solid green;
+  border-radius: 50px;
+}
+
+.heading1 {
+  font-family: 'Rubik Vinyl', cursive;
+}
+
+.description {
+  font-family: 'Sevillana', cursive;
+  padding-top: 15px;
+
 }
 
 .catFact {
@@ -16,21 +41,29 @@ body {
   text-align: center;
   height: 200px;
   width: 250px;
-  background-color: #FFFEE0
+  background-color: #FFFEE0;
+  font-family: 'Sevillana', cursive;
+}
+
+.gridContainer {
+  display: flex;
+  justify-content: center;
 }
 
 .factGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  row-gap: 50px;
-  column-gap: 50px;
+  grid-template-columns: 350px 350px 350px 350px;
+  grid-template-rows: 280px 280px 280px;
+  // row-gap: 50px;
+  // column-gap: 50px;
 }
 
 .btnContainer {
   display: flex;
   justify-content: space-between;
   margin-top: 100px;
+  margin-bottom: 100px;;
+
 }
 
 .factBtn {
@@ -38,10 +71,14 @@ body {
   // margin-left: 500px;
   height: 100px;
   width: 300px;
+  font-family: 'Sevillana', cursive;
+  font-size: 2rem;
 }
 
 .randomBtn {
   margin-right: 500px;
+  font-family: 'Sevillana', cursive;
+  font-size: 2rem;
 //   background: url("./images/Random-cat-fact-img.png");
   // height: 100px;
   // width: 300px;
@@ -51,6 +88,25 @@ body {
 }
 
 .randomFact {
-  padding-top: 50px;
+  height: 12vh;
+  width: 90vw;
+  // padding-top: 50px;
   padding-left: 50px;
+  margin-bottom: 100px;
+  font-size: 1.7rem;
+  font-family: 'Sevillana', cursive;
+  background-color: #FFFEE0;
+  border-radius: 50px;
+  border: 1px solid green;
+}
+
+.randomFactTitle {
+  font-family: 'Rubik Vinyl', cursive;
+  font-size: 2rem;
+}
+
+.randomFactContainer {
+display: flex;
+justify-content: center;
+
 }

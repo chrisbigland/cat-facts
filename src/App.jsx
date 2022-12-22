@@ -62,21 +62,23 @@ const App = () => {
   return (
     <>
       <div>
-        <div className={styles.heading}>
-        <h1>Cat Facts</h1>
-        <p>Click below for a selection of our favourite cat facts!</p>
+        <div className={styles.headingContainer}>
+          <div className={styles.heading}>
+          <h1 className={styles.heading1}>Cat Facts</h1>
+          <p className={styles.description}>Click below for a selection of our favourite cat facts!</p>
+          </div>
         </div>
         <div className={styles.btnContainer}>
           {" "}
           {/* button container */}
           <button className={styles.factBtn} onClick={updateFacts}>
-            Click me to show/hide all the cat facts
+            Show or hide all the cat facts
           </button>{" "}
           {/* all facts button*/}
           <button className={styles.randomBtn} onClick={updateRandomFact}>
             {" "}
             {/* random fact button*/}
-            Click Me For A Random Cat Fact
+            Give me a random cat fact!
           </button>
         </div>
         
@@ -84,10 +86,16 @@ const App = () => {
 
       {/* <img>{cat}</img> */}
       {/* <img src="./Random-cat-fact-img.png" /> */}
-      <div className={styles.randomFact}>
-      <p>Random Cat Fact: {randomFact.fact}</p>
+      <div className={styles.randomFactContainer}>
+        <div className={styles.randomFact}>
+        <p><span className={styles.randomFactTitle}>Random Cat Fact: </span>{randomFact.fact}</p>
       </div>
-      <div className={styles.factGrid}>{factContent}</div>
+
+      </div>
+      <div className={styles.gridContainer}>
+        <div className={styles.factGrid}>{factContent}</div>
+      </div>
+    
     </>
   );
 };
