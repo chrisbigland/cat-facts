@@ -17,14 +17,12 @@ export const getCatFact = () => {
     .then((response) => response.json())
     .then((jsonResponse) => {
       const jsonCatFacts = jsonResponse.data;
-      console.log("jsonCatFacts is", jsonCatFacts); // an array of objects, each with a 'fact' and a 'length' key.
 
       const cleanedCatFacts = jsonCatFacts.map((object) => {
         factIdNo = factIdNo + 1;
 
         return cleanCatFacts(object, factIdNo);
       });
-      console.log(cleanedCatFacts);
 
       return cleanedCatFacts;
     })

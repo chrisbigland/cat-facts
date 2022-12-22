@@ -1,24 +1,56 @@
+body {
+  background-image: url("./images/paw-img.jpeg");
+}
+
+.heading {
+  text-align: center;
+  padding-top: 40px;
+}
+
 .catFact {
   border: 1px solid green;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 200px;
+  width: 250px;
+  background-color: #FFFEE0
 }
 
 .factGrid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
+  row-gap: 50px;
+  column-gap: 50px;
 }
 
-
 .btnContainer {
-  width: 100%;
-  height: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 100px;
+}
+
+.factBtn {
+  margin-left: 500px;
+  // margin-left: 500px;
+  height: 100px;
+  width: 300px;
 }
 
 .randomBtn {
-//   background: url("./Random-cat-fact-img.png");
-//   height: 100px;
-//   width: 300px;
+  margin-right: 500px;
+//   background: url("./images/Random-cat-fact-img.png");
+  // height: 100px;
+  // width: 300px;
 //   // object-fit: scale-down;
 //   max-width:100%;
 // max-height:100%;
+}
+
+.randomFact {
+  padding-top: 50px;
+  padding-left: 50px;
 }
