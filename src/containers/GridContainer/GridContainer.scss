@@ -1,0 +1,25 @@
+.catFact {
+    border: 1px solid green;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 200px;
+    width: 250px;
+    background-color: #FFFEE0;
+    font-family: 'Sevillana', cursive;
+  }
+
+  .gridContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .factGrid {
+    display: grid;
+    grid-template-columns: 350px 350px 350px 350px;
+    grid-template-rows: 280px 280px 280px;
+    // row-gap: 50px;
+    // column-gap: 50px;
+  }
