@@ -1,9 +1,9 @@
-import styles from "./App.module.scss";
+import "./App.scss";
 import { useState } from "react";
-import { cleanup } from "@testing-library/react";
-// import cat from "./Random-cat-fact-img.png";
-
 import { getCatFact } from "./services/catfacts.service";
+import CatFactCard from "./components/CatFactCard/CatFactCard";
+import Header from "./components/Header/Header";
+import ButtonContainer from "./container/ButtonContainer/ButtonContainer";
 
 const App = () => {
   const [facts, setFacts] = useState([]);
@@ -49,11 +49,12 @@ const App = () => {
   const factContent = factsShowing
     ? facts.map((fact) => {
         return (
-          <>
-            <div className={styles.catFact} key={fact.factId}>
-              {fact.fact}
-            </div>
-          </>
+          <div key={fact.factId}>
+            <CatFactCard
+              factId={fact.factId}
+              fact={fact.fact}
+            />
+          </div>
         );
       })
     : console.log("content should be hidden");
@@ -62,40 +63,21 @@ const App = () => {
   return (
     <>
       <div>
-        <div className={styles.headingContainer}>
-          <div className={styles.heading}>
-          <h1 className={styles.heading1}>Cat Facts</h1>
-          <p className={styles.description}>Click below for a selection of our favourite cat facts!</p>
-          </div>
-        </div>
-        <div className={styles.btnContainer}>
-          {" "}
-          {/* button container */}
-          <button className={styles.factBtn} onClick={updateFacts}>
-            Show or hide all the cat facts
-          </button>{" "}
-          {/* all facts button*/}
-          <button className={styles.randomBtn} onClick={updateRandomFact}>
-            {" "}
-            {/* random fact button*/}
-            Give me a random cat fact!
-          </button>
-        </div>
-        
+        <Header />
+        <ButtonContainer updateFacts={updateFacts} updateRandomFact={updateRandomFact}/>
       </div>
 
-      {/* <img>{cat}</img> */}
-      {/* <img src="./Random-cat-fact-img.png" /> */}
-      <div className={styles.randomFactContainer}>
-        <div className={styles.randomFact}>
-        <p><span className={styles.randomFactTitle}>Random Cat Fact: </span>{randomFact.fact}</p>
+      <div className="randomFactContainer">
+        <div className="randomFact">
+          <p>
+            <span className="randomFactTitle">Random Cat Fact: </span>
+            {randomFact.fact}
+          </p>
+        </div>
       </div>
-
+      <div className="gridContainer">
+        <div className="factGrid">{factContent}</div>
       </div>
-      <div className={styles.gridContainer}>
-        <div className={styles.factGrid}>{factContent}</div>
-      </div>
-    
     </>
   );
 };

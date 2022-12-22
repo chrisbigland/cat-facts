@@ -1,0 +1,26 @@
+.headingContainer {
+  display: flex;
+  justify-content: center;
+
+}
+
+.heading {
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #FFFEE0;
+  font-size: 2rem;
+  width: 60vw;
+  border: 1px solid green;
+  border-radius: 50px;
+}
+
+.heading1 {
+  font-family: 'Rubik Vinyl', cursive;
+}
+
+.description {
+  font-family: 'Sevillana', cursive;
+  padding-top: 15px;
+
+}

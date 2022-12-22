@@ -6,13 +6,14 @@ const cleanCatFacts = (fact, factIdNo) => {
   let cleanedFact;
   Object.keys(fact).forEach((key) => {
     if (key.includes("fact")) {
-      cleanedFact = { fact: fact[key], factId: factIdNo };
+      cleanedFact = { fact: fact[key], factId: factIdNo};
     }
   });
   return cleanedFact;
 };
 
 export const getCatFact = () => {
+
   return fetch(API_URL)
     .then((response) => response.json())
     .then((jsonResponse) => {
