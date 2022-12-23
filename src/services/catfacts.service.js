@@ -1,6 +1,6 @@
 const API_URL = "https://catfact.ninja/facts";
 
-let factIdNo = 0;
+let factIdNo;
 
 const cleanCatFacts = (fact, factIdNo) => {
   let cleanedFact;
@@ -18,19 +18,46 @@ export const getCatFact = () => {
     .then((jsonResponse) => {
       const jsonCatFacts = jsonResponse.data;
 
+      factIdNo = 0
+
       const cleanedCatFacts = jsonCatFacts.map((object) => {
+        
         factIdNo = factIdNo + 1;
 
         return cleanCatFacts(object, factIdNo);
       });
-
-      return cleanedCatFacts;
+      console.log(cleanedCatFacts)
+      return cleanedCatFacts;   // array of objects - cleaned cat facts
     })
     .catch((error) => {
       console.error(error);
     });
 };
 
-// export const whatIsJson = () => {
-//     console.log("cleanedCatFacts is ", cleanedCatFacts)
-// }
+//  const updateRandomFact = async () => {
+//     // move to services?
+//     const apiFacts = await getCatFact();
+
+//     const createNewRandomNumber = (randomNumber) => {
+//       console.log("createNewRandomNumber function triggered");
+//       randomNumber = Math.floor(Math.random() * apiFacts.length);
+//       if (randomNumber === prevNum) {
+//         createNewRandomNumber();
+//       } else {
+//         return randomNumber;
+//       }
+//     };
+
+//     let randomNumber = Math.floor(Math.random() * apiFacts.length);
+
+//     if (prevNum != randomNumber) {
+//       setPrevNum(randomNumber);
+//       const newRandomFact = apiFacts[randomNumber];
+//       setRandomFact(newRandomFact);
+//     } else {
+//       randomNumber = createNewRandomNumber();
+//       setPrevNum(randomNumber);
+//       const newRandomFact = apiFacts[randomNumber];
+//       setRandomFact(newRandomFact);
+//     }
+//   };

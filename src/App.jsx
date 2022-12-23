@@ -1,13 +1,12 @@
-import styles from "./App.module.scss";
+import "./App.module.scss";
 import { useState } from "react";
 import { cleanup } from "@testing-library/react";
-// import cat from "./Random-cat-fact-img.png";
 
 import { getCatFact } from "./services/catfacts.service";
 
 import ButtonContainer from "./containers/ButtonContainer";
 import GridContainer from "./containers/GridContainer/GridContainer";
-import RandomFactContainer from "./containers/RandomFactContainer/RandomFactContainer";
+import RandomFact from "./components/RandomFact"
 import Heading from "./components/Heading/Heading";
 
 const App = () => {
@@ -17,19 +16,23 @@ const App = () => {
   const [prevNum, setPrevNum] = useState(0);
 
   const updateFacts = async () => {
-    const apiFacts = await getCatFact();
+    const apiFacts = await getCatFact();    // array of objects - cleaned cat facts
     setFacts(apiFacts);
     setFactsShowing(!factsShowing);
     console.log(facts);
   };
 
+  // CREATE NEW, BRIEF UPDATERANDOMFACTS FUNCTION HERE AS ABOVE?
+
   const updateRandomFact = async () => {
     // move to services?
-    const apiFacts = await getCatFact();
+    const apiFacts = await getCatFact();    //waits for promise to resolve before setting apiFacts to result of getCatFact (cleaned facts - array of objects)
 
-    const createNewRandomNumber = (randomNumber) => {
+    let randomNumber = Math.floor(Math.random() * apiFacts.length); // sets random number
+
+    const createNewRandomNumber = (randomNumber) => {           // function to create new random number - triggered if the same number as the previous one
       console.log("createNewRandomNumber function triggered");
-      randomNumber = Math.floor(Math.random() * apiFacts.length);
+      // randomNumber = Math.floor(Math.random() * apiFacts.length);
       if (randomNumber === prevNum) {
         createNewRandomNumber();
       } else {
@@ -37,9 +40,9 @@ const App = () => {
       }
     };
 
-    let randomNumber = Math.floor(Math.random() * apiFacts.length);
 
-    if (prevNum != randomNumber) {
+
+    if (prevNum != randomNumber) {    // checks if prev number same, if not, sets prev number and sets newRandomFact to index of new random number, otherwise runs createNewRandomNumber function
       setPrevNum(randomNumber);
       const newRandomFact = apiFacts[randomNumber];
       setRandomFact(newRandomFact);
@@ -59,26 +62,8 @@ const App = () => {
           updateFacts={updateFacts}
           updateRandomFact={updateRandomFact}
         />
-        <RandomFactContainer />
+        <RandomFact randomFact={randomFact} />
         <GridContainer facts={facts} factsShowing={factsShowing} />
-      </div>
-
-      <div className={styles.randomFactContainer}>
-        {" "}
-        {/*random fact container*/}
-        <div className={styles.randomFact}>
-          {" "}
-          {/*random fact component*/}
-          <p>
-            <span className={styles.randomFactTitle}>Random Cat Fact: </span>
-            {randomFact.fact}
-          </p>
-        </div>
-      </div>
-      <div className={styles.gridContainer}>
-        {" "}
-        {/*grid container*/}
-        {/* <div className={styles.factGrid}>{factContent}</div> {/*grid component*/}
       </div>
     </>
   );

@@ -3,9 +3,9 @@ import './Fact.scss'
 
 const Fact = (props) => {
   const { fact } = props;
+  console.log("fact.factId is", fact.factId)
   return (
-    <div className="catFact">
-      {/* key={fact.factId} */}
+    <div className="catFact" >
       {fact.fact}
     </div>
   );

@@ -1,0 +1,23 @@
+.randomFact {
+    height: 12vh;
+    width: 90vw;
+    // padding-top: 50px;
+    padding-left: 50px;
+    margin-bottom: 100px;
+    font-size: 1.7rem;
+    font-family: 'Sevillana', cursive;
+    background-color: #FFFEE0;
+    border-radius: 50px;
+    border: 1px solid green;
+  }
+  
+  .randomFactTitle {
+    font-family: 'Rubik Vinyl', cursive;
+    font-size: 2rem;
+  }
+  
+  .randomFactContainer {
+  display: flex;
+  justify-content: center;
+  
+  }

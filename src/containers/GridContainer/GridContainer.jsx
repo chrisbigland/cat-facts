@@ -7,7 +7,7 @@ const GridContainer = (props) => {
 
   const factContent = factsShowing // move to GridContainer?
     ? facts.map((fact) => {
-        return <Fact fact={fact}/>;
+        return <Fact fact={fact} key={fact.factId}/>;
       })
     : console.log("content should be hidden");
 
