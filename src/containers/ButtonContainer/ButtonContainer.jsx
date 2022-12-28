@@ -7,8 +7,6 @@ const ButtonContainer = (props) => {
 
   return (
     <div className="btnContainer">
-      {" "}
-      {/*button container*/} {/* button container */}
       <Button updateFacts={updateFacts} text="Show or hide all the cat facts" />
       <Button
         updateFacts={updateRandomFact}

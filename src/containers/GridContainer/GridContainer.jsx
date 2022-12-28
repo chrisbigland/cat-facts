@@ -4,8 +4,7 @@ import Fact from '../../components/Fact/Fact';
 
 const GridContainer = (props) => {
   const { facts, factsShowing } = props;
-
-  const factContent = factsShowing // move to GridContainer?
+  const factContent = factsShowing 
     ? facts.map((fact) => {
         return <Fact fact={fact} key={fact.factId}/>;
       })
