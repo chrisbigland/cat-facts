@@ -23,7 +23,7 @@ const App = () => {
   };
 
   const createRandomNumber = (prev, facts) => {
-    let randomNumber = Math.floor(Math.random() * facts.length); // sets random number
+    let randomNumber = Math.floor(Math.random() * facts.length); 
 
     if (randomNumber === prev) {
       randomNumber = createRandomNumber(prev, facts);
@@ -34,7 +34,7 @@ const App = () => {
 
   const updateRandomFact = async () => {
     const apiFacts = await getCatFact(); //waits for promise to resolve before setting apiFacts to result of getCatFact (cleaned facts - array of objects)
-    let randomNumber = createRandomNumber(prevNum, apiFacts); // sets random number
+    let randomNumber = createRandomNumber(prevNum, apiFacts);
     const newRandomFact = apiFacts[randomNumber];
     newRandomFact.fact
       ? setRandomFact(newRandomFact)
