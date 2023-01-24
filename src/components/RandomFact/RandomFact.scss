@@ -1,11 +1,10 @@
-.randomFact {
+.randomFactContainer {
     height: 12vh;
     width: 90vw;
     // padding-top: 50px;
-    padding-left: 50px;
+    padding: 0px 50px;
+    margin-left: 5vw;
     margin-bottom: 100px;
-    font-size: 1.7rem;
-    font-family: 'Sevillana', cursive;
     background-color: #FFFEE0;
     border-radius: 50px;
     border: 1px solid green;
@@ -15,9 +14,66 @@
     font-family: 'Rubik Vinyl', cursive;
     font-size: 2rem;
   }
+
+  .randomFact {
+    font-size: 1.5rem;
+    font-family: 'Sevillana', cursive;
+  }
   
-  .randomFactContainer {
-  display: flex;
-  justify-content: center;
-  
+  @media screen and (max-width: 1470px) {
+    .randomFact {
+      font-size: 1.4rem;
+    }
+  }
+
+  @media screen and (max-width: 1390px) {
+    .randomFact {
+      font-size: 1.3rem;
+    }
+  }
+
+
+  @media screen and (max-width: 1350px) {
+    .randomFact {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media screen and (max-width: 1250px) {
+    .randomFact {
+      font-size: 1.2rem;
+    }
+
+    .randomFactTitle {
+      font-size: 1.5rem;
+    }
+  }
+
+
+  @media screen and (max-width: 880px) {
+    .randomFact {
+      font-size: 1rem;
+    }
+
+    .randomFactTitle {
+      font-size: 1.2rem;
+    }
+
+    .randomFactContainer {
+      height: 18vh;
+    }
+  }
+
+
+
+  @media screen and (max-width: 450px) {
+    .randomFactContainer {
+      height: 25vh;
+    }
+  }
+
+  @media screen and (max-width: 320px) {
+    .randomFactContainer {
+      height: 30vh;
+    }
   }

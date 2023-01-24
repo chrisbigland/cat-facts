@@ -1,6 +1,22 @@
 .btn {
-        height: 100px;
+    height: 100px;
     width: 300px;
     font-family: 'Sevillana', cursive;
     font-size: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+    .btn {
+        height: 70px;
+        width: 210px;
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .btn {
+        height: 70px;
+        width: 110px;
+        font-size: 1rem;
+    }
 }
