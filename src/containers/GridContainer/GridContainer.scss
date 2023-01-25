@@ -1,25 +1,68 @@
 .catFact {
-    border: 1px solid green;
-    border-radius: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 200px;
-    width: 250px;
-    background-color: #FFFEE0;
-    font-family: 'Sevillana', cursive;
-  }
+  border: 1px solid green;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 200px;
+  width: 250px;
+  background-color: #FFFEE0;
+  font-family: 'Sevillana', cursive;
+}
 
-  .gridContainer {
-    display: flex;
-    justify-content: center;
-  }
+.gridContainer {
+  display: flex;
+  justify-content: center;
+}
 
+.factGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 2%;
+  margin-right: 6vw;
+  margin-bottom: 2vw;
+  // grid-template-rows: 280px 280px 280px;
+  // grid-template-columns: 350px 350px 350px 350px;
+  // grid-template-rows: 280px 280px 280px;
+  // row-gap: 50px;
+  // column-gap: 50px;
+}
+
+@media screen and (max-width: 1470px) {
   .factGrid {
-    display: grid;
-    grid-template-columns: 350px 350px 350px 350px;
-    grid-template-rows: 280px 280px 280px;
-    // row-gap: 50px;
-    // column-gap: 50px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 4%;
   }
+}
+
+@media screen and (max-width: 1330px) {
+  .factGrid {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8%;
+    margin-right: 9vw;
+  }
+}
+
+@media screen and (max-width: 1330px) {
+  .factGrid {
+    gap: 6%;
+    margin-right: 12vw;
+  }
+}
+
+@media screen and (max-width: 940px) {
+  .factGrid {
+    gap: 4%;
+    grid-template-columns: 1fr 1fr;
+    margin-right: 8vw;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .factGrid {
+    gap: 2%;
+    grid-template-columns: 1fr;
+    margin-right: 0vw;
+  }
+}
